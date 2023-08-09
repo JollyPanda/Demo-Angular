@@ -1,0 +1,40 @@
+<h2>Lista de usuarios</h2>
+<div class="p-container">
+    <p class="user-list-p">En esta página encontrarás una tabla básica con información de usuarios cortesía de la API pública <a href="https://www.reqres.in">reqres.in</a>.
+        <br>
+    Puede hacer click en el título de cada sección de la tabla para cambiar el orden de la tabla o puede hacer click sobre el nombre de un usuario para ver toda su información.</p>
+</div>
+
+<table class="table-container">
+    <thead>
+        <tr>
+            <!-- Encabezados con llamadas a sortTable para el ordenamiento -->
+            <th (click)="sortTable('id')"
+                [ngClass]="{'asc': sortKey === 'id' && sortOrder, 'desc': sortKey === 'id' && !sortOrder}">
+                ID <span></span>
+            </th>
+            <th (click)="sortTable('first_name')"
+                [ngClass]="{'asc': sortKey === 'first_name' && sortOrder, 'desc': sortKey === 'first_name' && !sortOrder}">
+                Nombre <span></span>
+            </th>
+            <th (click)="sortTable('email')"
+                [ngClass]="{'asc': sortKey === 'email' && sortOrder, 'desc': sortKey === 'email' && !sortOrder}">
+                Email <span></span>
+            </th>
+            <th class="ignore-css">Foto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList">
+            <td>{{ user.id }}</td>
+            <!--Esta parte muestra el nombre y apellido del usuario
+            automáticamente genera el link que lleva a la página de detalles-->
+            <td><a [routerLink]="['/users', user.id]">{{ user.first_name }} {{ user.last_name }}</a></td>
+            <td>{{ user.email }}</td>
+            <td><img [src]="user.avatar" alt="Foto de perfil de {{ user.first_name }}"></td>
+        </tr>
+    </tbody>
+</table>
+<div class="buttonMore">
+    <button (click)="loadMoreUsers()" *ngIf="currentPage < totalPages">Cargar más usuarios</button>
+</div>

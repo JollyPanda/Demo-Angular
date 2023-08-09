@@ -1,0 +1,23 @@
+<div class="login-container">
+  <h2>Iniciar sesión</h2>
+  <h3>
+    ¡Bienvenido a mi demo de Angular!<br>
+    Esta es una página web sencilla que consta de 3 partes: inicio de sesión, lista de usuarios e información detallada
+    de usuarios. <br>
+    <br>
+    Puede iniciar sesión utilizando el correo electrónico eve.holt@reqres.in y la contraseña cityslicka.
+  </h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="userInputContainer">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" class="userInput" [(ngModel)]="loginData.email" required />
+    </div>
+    <div class="userInputContainer">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" class="userInput" [(ngModel)]="loginData.password"
+        required />
+    </div>
+    <button type="submit">Login</button>
+    <div *ngIf="showError" class="error-message">{{ errorMessage }}</div>
+  </form>
+</div>

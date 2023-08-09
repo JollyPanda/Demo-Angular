@@ -1,0 +1,13 @@
+<div class="card-container">
+    <div class="card-content">
+        <h2 class="title">Detalle del usuario</h2>
+        <img src="{{ userDetails.avatar }}" alt="Foto de perfil de {{ userDetails.first_name }}">
+        <div class="user-info">
+            <p>
+                Nombre: {{ userDetails.first_name }} <br><br>
+                Apellido:{{ userDetails.last_name }} <br><br>
+                Email:{{ userDetails.email }}
+            </p>
+        </div>
+    </div>
+</div>
